@@ -1,0 +1,25 @@
+{
+    "entries": [
+        {
+            "file": "analises/1.qmd",
+            "type": "sec",
+            "id": "top10",
+            "suffix": "",
+            "title": "Quais são os 10 processos de classe HC mais antigos no acervo?"
+        },
+        {
+            "file": "analises/1.qmd",
+            "type": "fig",
+            "id": "descritiva-top10",
+            "suffix": "",
+            "title": "Gráficos de coluna referente aos relatores e o ramo dos processos mais antigos"
+        },
+        {
+            "file": "analises/1.qmd",
+            "type": "tbl",
+            "id": "top10",
+            "suffix": "",
+            "title": "Tabela dos processos de classe HC mais antigos"
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Atividade Desafio - STF",
+    "section": "",
+    "text": "Prefácio\nO objetivo desse Quarto Book é realizar a atividade desafio designada para os inscritos no processo seletivo da vaga de estágio para o Núcleo de Análise de Dados e Estatística do Supremo Tribunal Federal.\nAs análises realizadas são referentes ao acervo processual do STF e são as seguintes:\n\n1  Quais são os 10 processos de classe HC mais antigos no acervo?\n2  Quantos processos com mais de 180 dias desde o último andamento cada ministro possui no acervo?\n3  Qual é o número de processos por situação da decisão final no acervo de cada ministro?\n\nAlém disso, foi-se criado um painel(dashboard) a fim de visualizar os gráficos apresentados nas análises de maneira mais iterativa e com filtros. Desta forma, pode-se realizar análises mais específicas para cada subconjunto dos processos.",
+    "crumbs": [
+      "Prefácio"
+    ]
+  },
+  {
+    "objectID": "metodologia.html",
+    "href": "metodologia.html",
+    "title": "Metodologia",
+    "section": "",
+    "text": "O banco de dados necessário para a realização destas análises foi apresentado pela própria equipe responsável pelo processo seletivo. Ele pode ser encontrado aqui, isto é, no site Corte Aberta do STF.\nAdemais, foram-se realizadas apenas análises exploratórias, visto a própria natureza dos dados e o objetivo desse desafio.\nNota-se também que este relatório foi feito utilizando o Quarto. Os gráficos e as tabelas foram gerados com pacotes do R, versão 4.4.2 e o painel foi realizado através do Shiny. Todas essas ferramentas foram usadas dentro do RStudio(versão 2024.12.1+563).",
+    "crumbs": [
+      "Metodologia"
+    ]
+  },
+  {
+    "objectID": "analises/1.html",
+    "href": "analises/1.html",
+    "title": "1  Quais são os 10 processos de classe HC mais antigos no acervo?",
+    "section": "",
+    "text": "O objetivo dessa análise é observar os processo da classe HC mais antigos do acervo. As variáveis trabalhadas são “Classe”(variável qualitativa) e “Data de atuação”(variável qualitativa). Além disso, será evidenciado o código do processo, o relator responsável e o ramo de direito de tal.\n\n\n\n\nTabela 1.1: Tabela dos processos de classe HC mais antigos\n\n\n\n\n\n\n\n\n\n\nAtravés da Tabela 1.1, nota-se muitos processos do direito penal e processual penal. O mesmo dado é confirmado pela Figura 1.1 (b). Além disso, observa-se processos de anos distintos, com o mais velho deles sendo de 2008, isto é, 17 anos atrás. Enquanto isso, o mais recente é de 2019, 6 anos atrás.\n\n\n\nFigura 1.1: Gráficos de coluna referente aos relatores e o ramo dos processos mais antigos\n\n\n\n\n\n\n\n(a) Ministros\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Ramo de direito\n\n\n\n\n\n\n\n\n\n\n\n\nAcerca dos relatores responsáveis por estes processos, o Ministro Gilmar Mendes é responsável por 5 destes processos. Ele é o relator que mais aparece seguido do Ministro Nunes Marques com 3 processos.\nEnquanto isso, os Ministros Marco Aurélio e André Mendonça possuem 1 processo cada. Nota-se também que eles são os responsáveis pelos dois processos mais antigos com os códigos 94189(2008) e 111812(2011), respectivamente.",
+    "crumbs": [
+      "Análises",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quais são os 10 processos de classe HC mais antigos no acervo?</span>"
+    ]
+  },
+  {
+    "objectID": "analises/2.html",
+    "href": "analises/2.html",
+    "title": "2  Quantos processos com mais de 180 dias desde o último andamento cada ministro possui no acervo?",
+    "section": "",
+    "text": "Essa segunda análise deseja evidenciar a quantidade de processos antigos de cada ministro, especificamente processos que estão no acervos parados há 180 dias, ou seja, não tiveram nenhum andamento nessa janela de tempo. As variáveis utilizadas nessa análise são “Relator”(variável qualitativa) e “Data do último andamento”(variável qualitativa). Ademais, evidencia-se que 8 processos ficaram de fora da análise, visto que o ministro responsável por estes processos não estava identificado.\n\n\n\n\nFigura 2.1: Gráficos de coluna da frequência absoluta de projetos com mais de 180 dias de cada ministro\n\n\n\n\n\n\n\n\nPrimeiramente, faz-se evidente vários relatores com pouquíssima quantidade de projetos com mais de 180 dias desde o seu último andamento. Nota-se que a maioria destes relatores com frequência relativa abaixo de 1% são ex-membros da corte. São eles:\n\nMin. Ayres Brito;\nMin. Joaquim Barbosa;\nMin. Marco Aurélio;\nMin. Ricardo Lewandowski(atual Ministro da Justiça e Segurança Pública);\nMin. Rosa Weber.\n\nAlém disso, observa-se os ministros André Mendonça(24,11%), Luiz Fux(19,26%) e Nunes Marques(16,61%) representam quase 60% de todos os 2534 processos parados há 180 dias.\n\n\n\n\nTabela 2.1: Tabela dos processos estagnados dos ministros atuais\n\n\n\n\n\n\n\n\n\n\nAcerca dos ministros atuais do STF, a média de processos estagnados é igual a 217,72 com desvio-padrão de 199,17. Ou seja, tem-se uma enorme variabilidade. Dessa maneira, evidencia-se, através da Tabela 2.1, 4 ministros abaixo de 100 processos, 4 entre 104 e 218, enquanto os outros 3 possuem acima de 400 processos desse jeito.",
+    "crumbs": [
+      "Análises",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quantos processos com mais de 180 dias desde o último andamento cada ministro possui no acervo?</span>"
+    ]
+  },
+  {
+    "objectID": "analises/3.html",
+    "href": "analises/3.html",
+    "title": "3  Qual é o número de processos por situação da decisão final no acervo de cada ministro?",
+    "section": "",
+    "text": "A seguinte análise tem como objetivo evidenciar as proporções das duas possíveis situações de decisão final dos processos para cada ministro. Nota-se que a variável “Situação da decisão final”(variável categórica) possui duas categorias: “Com decisão final” ou “Sem decisão final”. Além disso, evidencia-se que 1142 processos não possuem seus ministros identificados. Dessa maneira, estes foram excluídos da análise.\n\n\n\n\nFigura 3.1: Gráfico de coluna bivariado dos ministros e a situação final do processo\n\n\n\n\n\n\n\n\nAtravés da Figura 3.1, nota-se que todos os ministros possuem maior quantidade de processos com decisão final do que sem decisão. O ministro com maior porcentagem de processos desta forma é o Ministro Presidente seguido do Ministro Ricardo Lewandowski e o Ministro Flávio Dino.\nEm termos de quantidade bruta de processos com decisão final, nota-se que o Ministro Presidente está em primeiro lugar seguido dos ministros Alexandre de Moraes e Nunes Marques.\nDo outro lado, os ministros Luís Roberto Barroso, Marco Aurélio e André Mendonça são os ministros com maior frequência relativa de processos sem decisão final, respectivamente. Evidencia-se também que o ministro André Mendonça é o ministro com maior quantidade absoluta de processos sem essa decisão.",
+    "crumbs": [
+      "Análises",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Qual é o número de processos por situação da decisão final no acervo de cada ministro?</span>"
+    ]
+  },
+  {
+    "objectID": "opcional.html",
+    "href": "opcional.html",
+    "title": "4  Sugestão de análise extra",
+    "section": "",
+    "text": "Acredito que, dado a falta de necessidade da realização de uma amostragem, técnicas exploratórias se tornam mais recomendáveis. Desta maneira, sugiro a realização de uma análise de correspondência, visto que grande parte das variáveis do banco de dados são categoricas e, em geral, a maior parte de variáveis (inclusive numéricas) podem ser categorizadas. Ademais, a análise de correspondência por trabalhar com a tabela de frequência das variáveis é uma análise com objetivo descritivo e não inferencial.\nOu seja, a realização de uma análise de correspondência se torna interessante dado a natureza da técnica se provando uma análise exploratória multivariada aplicável.\nAlém disso, penso que uma análise de correspondência múltipla pode facilmente traçar “perfis” de processos de certos tipos. Sejam eles processos com grande tempo de dias parados ou processos que ainda não possuem uma decisão final.\nPor fim, a análise de correspondência traz uma representação gráfica relevante para a detecção destes perfis e de categorias relacionadas, além de seu indicador de variabilidade (inércia) ser relevantes.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sugestão de análise extra</span>"
+    ]
+  }
+]

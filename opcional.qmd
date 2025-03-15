@@ -1,0 +1,9 @@
+# Sugestão de análise extra
+
+Acredito que, dado a falta de necessidade da realização de uma amostragem, técnicas exploratórias se tornam mais recomendáveis. Desta maneira, sugiro a realização de uma análise de correspondência, visto que grande parte das variáveis do banco de dados são categoricas e, em geral, a maior parte de variáveis (inclusive numéricas) podem ser categorizadas. Ademais, a análise de correspondência por trabalhar com a tabela de frequência das variáveis é uma análise com objetivo descritivo e não inferencial.
+
+Ou seja, a realização de uma análise de correspondência se torna interessante dado a natureza da técnica se provando uma análise exploratória multivariada aplicável.
+
+Além disso, penso que uma análise de correspondência múltipla pode facilmente traçar "perfis" de processos de certos tipos. Sejam eles processos com grande tempo de dias parados ou processos que ainda não possuem uma decisão final.
+
+Por fim, a análise de correspondência traz uma representação gráfica relevante para a detecção destes perfis e de categorias relacionadas, além de seu indicador de variabilidade (inércia) ser relevantes.

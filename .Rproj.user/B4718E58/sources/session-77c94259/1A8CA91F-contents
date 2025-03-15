@@ -1,0 +1,13 @@
+# Prefácio {.unnumbered}
+
+O objetivo desse Quarto Book é realizar a atividade desafio designada para os inscritos no processo seletivo da vaga de estágio para o Núcleo de Análise de Dados e Estatística do Supremo Tribunal Federal.
+
+As análises realizadas são referentes ao acervo processual do STF e são as seguintes:
+
+-   @sec-top10
+
+-   @sec-180dias
+
+-   @sec-decisaofinal
+
+Além disso, foi-se criado um painel(dashboard) a fim de visualizar os gráficos apresentados nas análises de maneira mais iterativa e com filtros. Desta forma, pode-se realizar análises mais específicas para cada subconjunto dos processos.

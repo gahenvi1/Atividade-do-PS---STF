@@ -1,0 +1,17 @@
+---
+title: "Dashboard"
+format:
+  html: 
+    grid:
+      #sidebar-width: 3px
+      body-width: 1200px
+      margin-width: 2px
+      gutter-width: 1.5rem
+---
+
+<iframe src="https://nsd14o-gabriel-henrique.shinyapps.io/dashboard-stf/" 
+        width="100%" 
+        height="800px" 
+        style="border: 2px solid #ccc; border-radius: 10px; box-shadow: 3px 3px 10px rgba(0,0,0,0.2);">
+</iframe>
+

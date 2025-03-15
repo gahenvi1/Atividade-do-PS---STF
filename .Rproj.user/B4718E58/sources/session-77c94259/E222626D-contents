@@ -1,0 +1,54 @@
+# Quantos processos com mais de 180 dias desde o último andamento cada ministro possui no acervo? {#sec-180dias}
+
+Essa segunda análise deseja evidenciar a quantidade de processos antigos de cada ministro, especificamente processos que estão no acervos parados há 180 dias, ou seja, não tiveram nenhum andamento nessa janela de tempo. As variáveis utilizadas nessa análise são "Relator"(variável qualitativa) e "Data do último andamento"(variável qualitativa). Ademais, evidencia-se que 8 processos ficaram de fora da análise, visto que o ministro responsável por estes processos não estava identificado.
+
+```{r}
+#| label: fig-freq-processos-antigos-por-ministro
+#| fig-cap: "Gráficos de coluna da frequência absoluta de projetos com mais de 180 dias de cada ministro"
+
+source("~/Documents/Atividade do PS - STF/rdocs/analises.R")
+
+
+g3 <- processos_antigos_por_ministro %>%
+  ggplot() +
+  aes(x = fct_reorder(Relator, Quantidade, .desc=F), y = Quantidade,
+      text = paste("Relator:", Relator, 
+                   "<br>Quantidade:", Quantidade, 
+                   "<br>Frequência:", percent(Frequencia))) +
+  geom_col(fill = "#3a445d") +
+  scale_fill_hue() +
+  coord_flip() +
+  theme_bw() +
+  theme(legend.position = "none",
+        axis.text.y = element_text(size = 10)) +  # Diminui a fonte do eixo Y
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 30))+
+  labs(y = "Quantidade", x = "", fill = "") 
+
+
+ggplotly(g3, tooltip = "text")
+
+```
+
+Primeiramente, faz-se evidente vários relatores com pouquíssima quantidade de projetos com mais de 180 dias desde o seu último andamento. Nota-se que a maioria destes relatores com frequência relativa abaixo de 1% são ex-membros da corte. São eles:
+
+-   Min. Ayres Brito;
+
+-   Min. Joaquim Barbosa;
+
+-   Min. Marco Aurélio;
+
+-   Min. Ricardo Lewandowski(atual Ministro da Justiça e Segurança Pública);
+
+-   Min. Rosa Weber.
+
+Além disso, observa-se os ministros André Mendonça(24,11%), Luiz Fux(19,26%) e Nunes Marques(16,61%) representam quase 60% de todos os 2534 processos parados há 180 dias.
+
+```{r}
+#| label: tbl-min-atuais
+#| tbl-cap: "Tabela dos processos estagnados dos ministros atuais"
+
+tbl_min_atuais
+
+```
+
+Acerca dos ministros atuais do STF, a média de processos estagnados é igual a 217,72 com desvio-padrão de 199,17. Ou seja, tem-se uma enorme variabilidade. Dessa maneira, evidencia-se, através da @tbl-min-atuais, 4 ministros abaixo de 100 processos, 4 entre 104 e 218, enquanto os outros 3 possuem acima de 400 processos desse jeito.

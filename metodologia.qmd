@@ -1,0 +1,7 @@
+# Metodologia {.unnumbered}
+
+O banco de dados necessário para a realização destas análises foi apresentado pela própria equipe responsável pelo processo seletivo. Ele pode ser encontrado [aqui](https://transparencia.stf.jus.br/extensions/acervo/acervo.html), isto é, no site Corte Aberta do STF.
+
+Ademais, foram-se realizadas apenas análises exploratórias, visto a própria natureza dos dados e o objetivo desse desafio.
+
+Nota-se também que este relatório foi feito utilizando o Quarto. Os gráficos e as tabelas foram gerados com pacotes do R, versão 4.4.2 e o painel foi realizado através do Shiny. Todas essas ferramentas foram usadas dentro do RStudio(versão 2024.12.1+563).

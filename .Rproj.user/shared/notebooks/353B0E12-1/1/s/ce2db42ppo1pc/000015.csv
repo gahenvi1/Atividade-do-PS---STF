@@ -1,0 +1,7 @@
+"0","#| label: tbl-top10"
+"0","#| tbl-cap: ""Tabela dos processos de classe HC mais antigos"""
+"0",""
+"0",""
+"0","source(""~/Documents/Atividade do PS - STF/rdocs/analises.R"")"
+"2","`summarise()` has grouped output by 'Relator'. You can override using the `.groups` argument."
+"0","datatable(top10)"

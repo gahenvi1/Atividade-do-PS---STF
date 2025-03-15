@@ -1,0 +1,19 @@
+{
+  "hash": "7bcfcb38a95be6613442f8286daa32bb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Quais são os 10 processos de classe HC mais antigos no acervo? {#sec-top10}\n\nO objetivo dessa análise é observar os processo da classe HC mais antigos do acervo. As variáveis trabalhadas são \"Classe\"(variável categórica) e \"Data de atuação\"(variável nominal). Além disso, será evidênciado o código do processo e o relator responsável por tal.\n\n\n\n\n\n::: {#tbl-top10 .cell tbl-cap='Tabela dos processos de classe HC mais antigos'}\n::: {.cell-output-display}\n\n```{=html}\n<div class=\"datatables html-widget html-fill-item\" id=\"htmlwidget-a097d3f1ee401f15ee7a\" style=\"width:100%;height:auto;\"></div>\n<script type=\"application/json\" data-for=\"htmlwidget-a097d3f1ee401f15ee7a\">{\"x\":{\"filter\":\"none\",\"vertical\":false,\"data\":[[\"HC 94189\",\"HC 111812\",\"HC 154118\",\"HC 164493\",\"HC 166549\",\"HC 167174\",\"HC 172136\",\"HC 174061\",\"HC 176174\",\"HC 181742\"],[\"MIN. MARCO AURÉLIO\",\"MIN. ANDRÉ MENDONÇA\",\"MIN. GILMAR MENDES\",\"MIN. GILMAR MENDES\",\"MIN. GILMAR MENDES\",\"MIN. NUNES MARQUES\",\"MIN. NUNES MARQUES\",\"MIN. GILMAR MENDES\",\"MIN. NUNES MARQUES\",\"MIN. GILMAR MENDES\"],[\"2008-03-27T00:00:00Z\",\"2011-12-26T00:00:00Z\",\"2018-03-12T00:00:00Z\",\"2018-11-05T00:00:00Z\",\"2018-12-16T00:00:00Z\",\"2019-01-10T00:00:00Z\",\"2019-06-04T00:00:00Z\",\"2019-08-06T00:00:00Z\",\"2019-09-25T00:00:00Z\",\"2020-02-20T18:51:23Z\"],[\"DIREITO PROCESSUAL PENAL\",\"DIREITO PENAL\",\"DIREITO PROCESSUAL PENAL\",\"DIREITO PROCESSUAL PENAL\",\"DIREITO PENAL\",\"DIREITO ELEITORAL\",\"DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO\",\"DIREITO PROCESSUAL PENAL\",\"DIREITO PROCESSUAL PENAL\",\"DIREITO PROCESSUAL PENAL\"]],\"container\":\"<table class=\\\"display\\\">\\n  <thead>\\n    <tr>\\n      <th>Processo<\\/th>\\n      <th>Relator<\\/th>\\n      <th>Data autuação<\\/th>\\n      <th>Ramo do Direito<\\/th>\\n    <\\/tr>\\n  <\\/thead>\\n<\\/table>\",\"options\":{\"pageLength\":10,\"autoWidth\":true,\"dom\":\"t\",\"scrollX\":true,\"class\":\"compact stripe hover\",\"columnDefs\":[{\"name\":\"Processo\",\"targets\":0},{\"name\":\"Relator\",\"targets\":1},{\"name\":\"Data autuação\",\"targets\":2},{\"name\":\"Ramo do Direito\",\"targets\":3}],\"order\":[],\"orderClasses\":false}},\"evals\":[],\"jsHooks\":[]}</script>\n```\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/htmltools-fill-0.5.8.1/fill.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/htmlwidgets-1.6.4/htmlwidgets.js\"></script>\n<link href=\"site_libs/datatables-css-0.0.0/datatables-crosstalk.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/datatables-binding-0.33/datatables.js\"></script>\n<script src=\"site_libs/jquery-3.6.0/jquery-3.6.0.min.js\"></script>\n<link href=\"site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css\" rel=\"stylesheet\" />\n<link href=\"site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js\"></script>\n<link href=\"site_libs/crosstalk-1.2.1/css/crosstalk.min.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/crosstalk-1.2.1/js/crosstalk.min.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

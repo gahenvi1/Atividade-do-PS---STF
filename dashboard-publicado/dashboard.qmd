@@ -1,0 +1,193 @@
+---
+title: "Processos no Acervo do STF"
+author: "Gabriel Ovídio"
+format: 
+  dashboard:
+    theme: cosmo
+    orientation: columns
+server: shiny
+---
+
+```{r}
+#| context: setup
+
+library(pacman)
+p_load(shinydashboard, tidyverse, ggplot2, readxl, dplyr, lubridate, DT, plotly, scales)
+
+banco <- read_excel("4797cb48-0ba9-4e66-832f-0ec6e43f44dd.xlsx") %>%
+  mutate(
+    Relator = str_to_title(Relator),
+    `Ramo do Direito` = str_to_title(`Ramo do Direito`))
+```
+
+
+# {.sidebar}
+
+```{r}
+selectInput("classe", "Selecione a classe:", choices = unique(banco$Classe), selected = "HC")
+sliderInput("dias_desde_ultimo_andamento", "Dias desde o último andamento:", min = 30, max = 365, value = 180, step = 10)
+sliderInput("top_antigos", "Quantidade de processos mais antigos:", min = 5, max = 30, value = 10, step = 1)
+selectInput("ministro", "Selecione o Ministro:", choices = unique(banco$Relator)[1:20], multiple = TRUE, selected = unique(banco$Relator)[1:19])
+
+```
+
+# Gráficos
+
+
+## Column {.tabset width="50%"}
+
+```{r}
+#| title: Processos mais antigos
+
+DTOutput("tabela_top_antigos")
+```
+
+```{r}
+#| title: Relatores
+
+plotlyOutput("plot_top_relatores")
+```
+
+```{r}
+#| title: Ramo do Direito
+
+plotlyOutput("plot_top_ramos")
+```
+
+## Column
+
+```{r}
+#|title: "Processos estagnados(grande tempo desde o último andamento)  por ministro"
+
+plotlyOutput("plot_estagnados_ministro")
+```
+
+```{r}
+#| title: "Situação da decisão final por ministro"
+
+plotlyOutput("plot_situacao_ministro")
+```
+
+
+```{r}
+#| context: server
+Sys.setlocale("LC_TIME", "pt_BR.UTF-8")
+
+###### Reajustando os bancos de dados de maneira reativa para considerar os filtros ###### 
+top10 <- reactive({
+  banco %>%
+    filter(
+      Classe == input$classe,
+      Relator %in% input$ministro
+    ) %>%
+    arrange(`Data autuação`) %>%
+    head(input$top_antigos) %>%
+    select(Processo, Relator, `Data autuação`, `Ramo do Direito`) %>%
+    mutate(
+      Processo = str_to_sentence(Processo) %>% str_remove("^Hc\\s+"),
+      `Data autuação` = format(`Data autuação`, "%d de %B de %Y")
+    )
+})
+
+processos_antigos_por_ministro <- reactive({
+  banco %>%
+    filter(
+      `Data último andamento` < (Sys.time() - days(input$dias_desde_ultimo_andamento)),
+      Relator %in% input$ministro
+    ) %>%
+    group_by(Relator) %>%
+    summarise(Quantidade = n(), .groups = "drop") %>%
+    mutate(Frequencia = Quantidade / sum(Quantidade))
+})
+
+situacao_final_por_ministro <- reactive({
+  banco %>%
+    filter(
+      Relator %in% input$ministro
+    ) %>%
+    group_by(Relator, `Situação da decisão final`) %>%
+    summarise(Quantidade = n(), .groups = "drop") %>%
+    mutate(Frequencia = Quantidade / sum(Quantidade))
+})
+
+### Renderizando os outputs ### 
+output$tabela_top_antigos <- renderDT({
+  datatable(top10(), 
+            options = list(
+              pageLength = nrow(top10()),
+              autoWidth = TRUE,
+              dom = 't',
+              scrollX = TRUE
+            ),
+            rownames = FALSE)
+})
+
+# Render Plot - Top Relatores
+output$plot_top_relatores <- renderPlotly({
+  g1 <- top10() %>%
+    count(Relator, name = "Quantidade") %>%
+    ggplot(aes(x = fct_reorder(Relator, Quantidade, .desc = FALSE), y = Quantidade)) +
+    geom_col(fill = "#3a445d") +
+    coord_flip() +
+    theme_bw() +
+    labs(y = "Quantidade", x = "")
+
+  ggplotly(g1)
+})
+
+# Render Plot - Top Ramos do Direito
+output$plot_top_ramos <- renderPlotly({
+  g2 <- top10() %>%
+    count(`Ramo do Direito`, name = "Quantidade") %>%
+    ggplot(aes(x = fct_reorder(`Ramo do Direito`, Quantidade, .desc = FALSE), y = Quantidade)) +
+    geom_col(fill = "#3a445d") +
+    coord_flip() +
+    theme_bw() +
+    labs(y = "Quantidade", x = "")
+
+  ggplotly(g2)
+})
+
+# Render Plot - Processos Estagnados por Ministro
+output$plot_estagnados_ministro <- renderPlotly({
+  g3 <- processos_antigos_por_ministro() %>%
+    ggplot(aes(x = fct_reorder(Relator, Quantidade, .desc = FALSE), y = Quantidade)) +
+    geom_col(fill = "#3a445d") +
+    coord_flip() +
+    theme_bw() +
+    labs(y = "Quantidade", x = "")
+
+  ggplotly(g3)
+})
+
+# Render Plot - Situação da Decisão Final
+output$plot_situacao_ministro <- renderPlotly({
+  g4 <- ggplot(situacao_final_por_ministro()) +
+  aes(
+    x = fct_reorder(Relator, Quantidade, .desc = T),
+    y = Quantidade,
+    fill = `Situação da decisão final`,
+    text = paste("Relator:", Relator, 
+                   "<br>Quantidade:", Quantidade, 
+                   "<br>Frequência:", percent(Frequencia))
+  ) +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0)) +
+  scale_fill_manual(values = c("Com decisão final" = "#3a445d", "Sem decisão final" = "#DC758F"))+
+  coord_flip() +
+  theme_bw() +
+  labs(y = "Quantidade", x = "", fill = "Situação da decisão final")
+
+  ggplotly(g4)%>%
+  layout(
+    height = 800,  
+    yaxis = list(
+      autorange = "reversed",  
+      tickangle = 0,
+      tickfont = list(size = 10),
+      fixedrange = FALSE 
+    )
+  )
+})
+```
+
+
